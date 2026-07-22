@@ -56,3 +56,26 @@ git push
 ```
 
 Колеги підтягують оновлення командою `git pull` (або `git submodule update --remote`, якщо підключено як submodule).
+
+## Автоматична синхронізація (macOS, launchd)
+
+Замість ручних `git pull`/`push` можна поставити фоновий процес, який кожні 15 хв сам підтягує зміни з GitHub і пушить локальні правки.
+
+1. Один раз перевірити, що push не питає логін щоразу:
+   ```bash
+   git config --global credential.helper osxkeychain
+   cd ~/.claude/skills/wanda-team-skills   # чи де б ви не клонували
+   git push   # введе токен один раз і закешує в keychain
+   ```
+2. Запустити встановлювач з теки клону:
+   ```bash
+   ./setup-autosync.sh
+   ```
+   Скрипт створює `~/.claude/scripts/wanda-skills-sync.sh` і launchd job `local.wanda-skills-sync` (кожні 15 хв: `git pull --rebase --autostash` → якщо є локальні зміни, `commit` + `push`).
+3. Перевірка:
+   ```bash
+   launchctl kickstart -k gui/$(id -u)/local.wanda-skills-sync
+   cat ~/Library/Logs/wanda-skills-sync.log
+   ```
+
+⚠️ Job не розрізняє, хто зробив зміну — будь-яка незакомічена правка у клоні (ваша чи Claude Code) автоматично піде в GitHub протягом 15 хв, без додаткового підтвердження.
