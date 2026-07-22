@@ -41,6 +41,14 @@ BadgeBookmark({ component, icon=true, lable, position, text })
 ```
 Висота32, bg=#e4e6e7(сірий, **єдиний без кольор.варіантів**), color rgba(44,44,44,.9).
 
+## Badge/Loyalty
+Node `5031:3660`. Шестикутна (hexagon) бірка рівня лояльності. Size(sm/xs)×Type(Current/Next/Past) — **не повний крос-варіант**: sm існує лише для Current, xs існує для всіх трьох Type.
+```
+BadgeLoyalty({ label="00", size: "sm"|"xs", type: "Current"|"Next"|"Past" })
+```
+Колір форми залежить від Type: Current=зелений, Next=рожевий/accent1, Past=сірий (кожен — окреме SVG-зображення, не токен-заливка). Текст: sm+Current=14px, будь-який xs=12px (обидва Open Sans SemiBold, білий).
+
 ## Notes
-- `lable`(не `label`) — реальна назва пропу у Figma, друкарська помилка.
+- `lable`(не `label`) — реальна назва пропу у Figma, друкарська помилка (стосується Badge/Bookmark).
 - Ripple існує лише для 4 з 5 кольорів (немає Default).
+- Badge/Loyalty використовує растрові/векторні шейпи-картинки на Type, не CSS-токени кольору — при імплементації звіряй асет, а не намагайся токенізувати колір.

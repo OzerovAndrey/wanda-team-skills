@@ -7,7 +7,7 @@ Node `2642:995`. State(Default/Hover/Active/Focus/Disabled)×Checked.
 ```
 MenuItem({ state, checked, icon=true, component, label="Label", badge })
 ```
-Вертикальний стек: Icon(32px) → Label(SemiBold10). Checked-фон: `--menu/item/bg/default`(rgba(29,111,226,.16)), обмежений нижньою частиною(`h:42px` з `58px` повної висоти — фон не займає весь таб, тільки нижню зону навколо іконки+тексту). Badge(опц.)=**реальний Badge/Counter**(default variant, bevel) top-right.
+Вертикальний стек: Icon(32px) → Label(SemiBold10). Checked-фон: `--menu/item/bg/default`(rgba(29,111,226,.16)), обмежений нижньою частиною(`h:42px` з `58px` повної висоти — фон не займає весь таб, тільки нижню зону навколо іконки+тексту). Badge(опц.)=**реальний Badge/Counter** top-right, **варіант залежить від checked**: `checked=false` → Default(сірий, bevel); `checked=true` → Important(#d83232, білий текст) — тобто бейдж міняє колір, коли таб активний/вибраний, не лишається завжди default.
 
 ## Menu (контейнер)
 Node `2642:1043`. Variant(Horizontal/Vertical).

@@ -23,9 +23,13 @@ Header({ authorized, balanceDetails, breakpoint, type: "Default" })
 ## Header/Balance (окремий компонент)
 Node `8:128778`. Той самий блок суми+стрілка+депозит-кнопка, що вбудований у бар вище — `--header/balance/{bg:#1d1e1f,borderradius:20,paddingl:12,paddingr:4,color,gap}`, з **emboss-ефектом**(`effects.md`).
 
+### Anatomy (Authorized=False)
+Той самий бар (бургер+Logo ліворуч), праворуч замість Header/Balance — дві кнопки: **"Login"**(Btn Text) + **"Sign up"**(Btn Accent). Раніше в цьому файлі не документовано — уточнено 22.07.2026 після виявлення свіжої зміни в Figma (`updatedAt` компонента Header новіший за попередню версію докса).
+
 ## Не досліджено детально
 - **Header/Language select** (`8:128725`, State Default/Hover/Active/Focus) — перемикач мови.
 - **Header/Game** (`1123:18276`, Play for real×Breakpoint×Authorized) — варіант шапки для сторінки гри.
+- Точний вміст зміни від 22.07.2026 (Figma `updatedAt` новіший за цей докс) — знайдено й задокументовано неавторизований стан (вище), але не виключено, що змінилось щось ще всередині Balance details чи Game/Language select — варто звірити детальніше при нагоді.
 
 ## Tokens
 `--header/{bg:#2c2e30,paddingleft-right/{bp},gapbetweenbtnlogo/{bp},gaprightblock/{bp}}`. `--header/balance/*`(окремо задокументовано вище). `--header/balancedetails/{gap:12,padding:12,gaplist:8,wager/{gap:4,paddingh:12,paddingv:8}}`. `--bg/neutral/{primary:#2c2e30,secondary:#222426}`. `--br/primary`(rgba(121,128,134,.44)).
