@@ -92,7 +92,7 @@ description: Design system reference for the Wanda iGaming platform (dark slate,
 | Cover | `references/cover.md` | НЕ продукт — службова обкладинка файлу + статус-бейджі (TODO/Deprecated тощо) |
 | Deprecated | `references/deprecated.md` | Порожній canvas — зарезервовано на майбутнє |
 | Image | `references/image.md` | Front(1:1,4:3)/Cover(Back+Front) |
-| Card (родина) | `references/card/*.md` | 17 підтипів, див. таблицю нижче |
+| Card (родина) | `references/card/*.md` | 20 підтипів, див. таблицю нижче |
 | Типографіка | `references/typography.md` | **T1-T5/D1-D3=заголовки; Body/Caption=текст; дефолт=bodyMd** |
 | Ефекти | `references/effects.md` | Shadow/Glow/Bevel/Emboss/Glass |
 | Градієнти | `references/gradients.md` | Btn/card-bg/оверлей/progress |
@@ -122,6 +122,9 @@ description: Design system reference for the Wanda iGaming platform (dark slate,
 | Jackpot | `3732:26010` | `card/jackpot.md` |
 | Mood | `4623:2805` | `card/mood.md` |
 | Daily | `4700:1643` | `card/daily.md` |
+| Duel | `5273:65599` | `card/duel.md` |
+| Popular | `5286:5582` | `card/popular.md` |
+| Activities | `5286:5603` | `card/activities.md` |
 
 ## Figma-файли
 
