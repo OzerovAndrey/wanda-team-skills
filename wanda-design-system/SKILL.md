@@ -73,7 +73,7 @@ description: Design system reference for the Wanda iGaming platform (dark slate,
 | Thumb | `references/thumb.md` | Ігрова мініатюра з 6 можливими тегами, вбудована в Card/Tournament/Jackpot |
 | Heading | `references/heading.md` | Заголовок секції з навігацією (стрілки+"All"), типово над каруселлю |
 | WoM | `references/wom.md` | Wheel of Mystery: Sector(вбудовує реальний Thumb!)+Pointer("Spin"), container-query обертання |
-| Layout | `references/layout.md` | **Сітка breakpoint'ів для збірки сторінок** — Sidebar/padding/content-width/Header-size/вертикальний ритм на xs-xl |
+| Layout | `references/layout.md` | **Сітка breakpoint'ів для збірки сторінок** — Sidebar/padding/content-width/Header-size/вертикальний ритм на xs-xl; повний деталізований розбір — `references/pages/*.md` (див. таблицю "Сторінки" нижче) |
 | Header | `references/header.md` | Топ-бар + розкривна Balance details(Progress/Circle+вбудована Card/Bonus/Basic) |
 | Hero | `references/hero.md` | Карусель промо(Banner/Card+QDW) + опц.Trust-блок(Stats+нагороди) |
 | Section | `references/section.md` | Секція-обгортка: Heading+контент-слот+опц.Navigator, пастельний градієнт як Announcer |
@@ -125,6 +125,16 @@ description: Design system reference for the Wanda iGaming platform (dark slate,
 | Duel | `5273:65599` | `card/duel.md` |
 | Popular | `5286:5582` | `card/popular.md` |
 | Activities | `5286:5603` | `card/activities.md` |
+
+### Сторінки (приклади повної збірки, canvas з реальних продуктових сторінок)
+
+Кожен тип сторінки — окремий файл у `references/pages/`, з точними paddings/gaps/розмірами по всіх breakpoint (xs-xl), виміряними напряму з реальних 5-фреймових прикладів у файлі `QbmTYjRSyzALRb5GIl4Itk` ("— W — Main"). Загальні (спільні для всіх типів) правила сітки — короткий quick-reference в `references/layout.md`.
+
+| Тип сторінки | Node | Файл |
+|---|---|---|
+| Main Page (Lobby — Authorized) | `8991:58214` | `pages/main-page.md` |
+
+Інші типи сторінок — додаються сюди по мірі надходження нових прикладів.
 
 ## Figma-файли
 
