@@ -1,0 +1,332 @@
+{
+  "controlSize": {
+    "xl": {
+      "value": "{controlSize.md} + 16",
+      "type": "sizing"
+    },
+    "lg": {
+      "value": "{controlSize.md} + 8",
+      "type": "sizing"
+    },
+    "md": {
+      "value": "{baseControlSize}",
+      "type": "sizing"
+    },
+    "sm": {
+      "value": "{controlSize.md} - 8",
+      "type": "sizing"
+    },
+    "xs": {
+      "value": "{controlSize.md} - 16",
+      "type": "sizing"
+    }
+  },
+  "fontWeightCursive": {
+    "value": "Italic",
+    "type": "fontWeights"
+  },
+  "lineHeightD1": {
+    "value": "88px",
+    "type": "lineHeights"
+  },
+  "lineHeightD2": {
+    "value": "68px",
+    "type": "lineHeights"
+  },
+  "lineHeightD3": {
+    "value": "38px",
+    "type": "lineHeights"
+  },
+  "lineHeightT1": {
+    "value": "32px",
+    "type": "lineHeights"
+  },
+  "lineHeightT2": {
+    "value": "28px",
+    "type": "lineHeights"
+  },
+  "lineHeightT3": {
+    "value": "24px",
+    "type": "lineHeights"
+  },
+  "lineHeightT4": {
+    "value": "22px",
+    "type": "lineHeights"
+  },
+  "lineHeightT5": {
+    "value": "20px",
+    "type": "lineHeights"
+  },
+  "lineHeightSubtitle1": {
+    "value": "28px",
+    "type": "lineHeights"
+  },
+  "lineHeightSubtitle2": {
+    "value": "24px",
+    "type": "lineHeights"
+  },
+  "lineHeightSubtitle3": {
+    "value": "20px",
+    "type": "lineHeights"
+  },
+  "lineHeightOverline": {
+    "value": "16px",
+    "type": "lineHeights"
+  },
+  "lineHeightBody2Xl": {
+    "value": "32px",
+    "type": "lineHeights"
+  },
+  "lineHeightBodyXl": {
+    "value": "28px",
+    "type": "lineHeights"
+  },
+  "lineHeightBodyLg": {
+    "value": "24px",
+    "type": "lineHeights"
+  },
+  "lineHeightBodyMd": {
+    "value": "20px",
+    "type": "lineHeights"
+  },
+  "lineHeightBodySm": {
+    "value": "16px",
+    "type": "lineHeights"
+  },
+  "lineHeightBodyXs": {
+    "value": "14px",
+    "type": "lineHeights"
+  },
+  "lineHeightCaption2": {
+    "value": "12px",
+    "type": "lineHeights"
+  },
+  "fontSizeD1": {
+    "value": "84",
+    "type": "fontSizes"
+  },
+  "fontSizeD2": {
+    "value": "64",
+    "type": "fontSizes"
+  },
+  "fontSizeD3": {
+    "value": "34",
+    "type": "fontSizes"
+  },
+  "fontSizeT1": {
+    "value": "28",
+    "type": "fontSizes"
+  },
+  "fontSizeT2": {
+    "value": "24",
+    "type": "fontSizes"
+  },
+  "fontSizeT3": {
+    "value": "20",
+    "type": "fontSizes"
+  },
+  "fontSizeT4": {
+    "value": "18",
+    "type": "fontSizes"
+  },
+  "fontSizeT5": {
+    "value": "16",
+    "type": "fontSizes"
+  },
+  "fontSizeSubtitle1": {
+    "value": "22",
+    "type": "fontSizes"
+  },
+  "fontSizeSubtitle2": {
+    "value": "18",
+    "type": "fontSizes"
+  },
+  "fontSizeSubtitle3": {
+    "value": "14",
+    "type": "fontSizes"
+  },
+  "fontSizeOverline": {
+    "value": "12",
+    "type": "fontSizes"
+  },
+  "fontSizeBody2Xl": {
+    "value": "24",
+    "type": "fontSizes"
+  },
+  "fontSizeBodyXl": {
+    "value": "20",
+    "type": "fontSizes"
+  },
+  "fontSizeBodyLg": {
+    "value": "16",
+    "type": "fontSizes"
+  },
+  "fontSizeBodyMd": {
+    "value": "14",
+    "type": "fontSizes"
+  },
+  "fontSizeBodySm": {
+    "value": "12",
+    "type": "fontSizes"
+  },
+  "fontSizeBodyXs": {
+    "value": "10",
+    "type": "fontSizes"
+  },
+  "fontSizeCaption2": {
+    "value": "8",
+    "type": "fontSizes"
+  },
+  "letterSpacingOverline": {
+    "value": "4%",
+    "type": "letterSpacing"
+  },
+  "borderWidthNone": {
+    "value": "0",
+    "type": "borderWidth"
+  },
+  "boxShadowNone": {
+    "value": {
+      "x": "0",
+      "y": "0",
+      "blur": "0",
+      "spread": "0",
+      "color": "#00000000",
+      "type": "dropShadow"
+    },
+    "type": "boxShadow",
+    "description": "box-shadow: none;"
+  },
+  "product1Step": {
+    "500": {
+      "value": "{product1}",
+      "type": "color"
+    },
+    "700": {
+      "value": "{product1}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.3",
+            "space": "hsl"
+          }
+        }
+      }
+    },
+    "900": {
+      "value": "{product1}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.6",
+            "space": "hsl"
+          }
+        }
+      }
+    },
+    "1000": {
+      "value": "{product1Step.900}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.24",
+            "space": "hsl"
+          }
+        }
+      }
+    }
+  },
+  "product2Step": {
+    "500": {
+      "value": "{product2}",
+      "type": "color"
+    },
+    "700": {
+      "value": "{product2}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.3",
+            "space": "hsl"
+          }
+        }
+      }
+    },
+    "900": {
+      "value": "{product2}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.6",
+            "space": "hsl"
+          }
+        }
+      }
+    }
+  },
+  "dangerStep": {
+    "500": {
+      "value": "{danger}",
+      "type": "color"
+    },
+    "700": {
+      "value": "{danger}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.3",
+            "space": "hsl"
+          }
+        }
+      }
+    },
+    "900": {
+      "value": "{danger}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.6",
+            "space": "hsl"
+          }
+        }
+      }
+    }
+  },
+  "letterSpacingTitle": {
+    "value": "2%",
+    "type": "letterSpacing"
+  },
+  "toneStep": {
+    "500": {
+      "value": "{tone.bg.neutral}",
+      "type": "color"
+    },
+    "800": {
+      "value": "{tone.bg.neutral}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.56",
+            "space": "hsl"
+          }
+        }
+      }
+    }
+  }
+}

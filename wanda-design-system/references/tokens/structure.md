@@ -1,49 +1,87 @@
 # Структура Token Studio (Wanda)
 
-Зафіксовано зі скріншота панелі Tokens Studio for Figma (v2.11.12). Це карта
-token sets, не самі значення — значення надходять окремими JSON-порціями.
+Підтверджено з реального JSON-експорту (`source/`, `$metadata.json` +
+`$themes.json`) — не зі скріншота. 3081 токен усього.
 
 ## Теми
 
-Два дзеркальні дерева тем: **light** та **dark**. На скріншоті активна (увімкнена
-для застосування) — тільки `light`, `dark` вимкнена (усі чекбокси зняті), але
-має ідентичну структуру сетів.
+Дві теми: **Light** та **Dark**. Кожна визначена в `$themes.json` через
+`selectedTokenSets` — які token sets активні і в якому статусі
+(`source` — учасник резолву значень, але не публікується як окрема
+змінна; `enabled` — публікується).
 
-## Token sets (шари, знизу вгору за архітектурою)
+## Token sets
 
-Для кожної теми — однакова послідовність сетів:
+Фактичний список (з `$metadata.json.tokenSetOrder`):
 
-1. **core** — примітиви/базові токени (без семантики). У `light` це активний
-   (вибраний) сет на скріншоті.
-2. **map** — проміжний шар мапінгу core → семантика.
-3. **alias** — семантичні аліаси (посилаються на `core`/`map`).
-4. **styles** — токени, що відповідають Figma styles.
-5. **component** — токени на рівні компонентів, поділені на підсети:
-   - **general** — спільні/загальні компонентні токени
-   - **product** — токени продуктових компонентів
-   - **widget** — токени віджетів
-   - **betting** — токени, специфічні для беттінг-функціоналу
+```
+light/core
+light/map
+light/alias
+light/styles
+light/component/general
+light/component/product
+light/component/widget
+light/component/betting
+dark/core
+dark/alias
+dark/component/general
+dark/component/product
+dark/component/widget
+dark/component/betting
+```
 
-Порядок читання значення токена (типово для Token Studio): `component.* → alias.* → map.* → core.*` — тобто компонентний токен зазвичай є alias'ом на семантичний, який в кінці посилається на примітив у `core`.
+**Важливо:** у `dark` НЕМАЄ окремих `map` і `styles` — тема Dark лише
+перевизначає частину `core`/`alias`/`component/*`, а розміри/типографію
+(`map`) і style-прив'язки (`styles`) успадковує від `light`.
 
-## Категорії всередині `core` (видно на скріншоті, список неповний — обрізаний скролом)
+## Порядок резолву (стек, later overrides earlier)
+
+**Light:**
+```
+light/core → light/map → light/alias → light/styles →
+light/component/general → light/component/product →
+light/component/widget → light/component/betting
+```
+
+**Dark:** (той самий light-стек як база, потім dark-шари поверх)
+```
+light/core → light/map → light/alias → light/styles →
+light/component/general → light/component/product →
+light/component/widget → light/component/betting →
+dark/core → dark/alias → dark/component/general →
+dark/component/product → dark/component/widget → dark/component/betting
+```
+
+Це не здогадка — точно виведено з `selectedTokenSets` кожної теми в
+`$themes.json`, відфільтрованого й впорядкованого за `tokenSetOrder`.
+Приклад підтвердження: `dark/core` перевизначає лише `product1`, `product2`,
+`success`, `warning`, `tone.text` — все інше (`fontFamilyMain`,
+`baseBorderRadius`, `black`/`white` тощо) падає крізь до `light/core`
+незмінним. Аналогічно `dark/alias.bg.neutral.primary` резолвиться через
+`{tone.bg.neutral}`, якого немає в `dark/core`, тож бере значення з
+`light/core.tone.bg.neutral` (`#798086`).
+
+## Категорії всередині `core`
 
 - **Sizing** — `baseControlSize`
-- **Color** — палітра базових кольорів (чорний/білий/сині/рожевий/жовті/зелений/
-  червоний/фіолетовий/бірюзовий/бежевий/лавандовий/рожевий пастельний/чорний,
-  назви поки не підписані — прийдуть з JSON), нижче йде `tone` → `bg` (вкладені
-  групи, видно 2 кольори: сірий, синій)
+- **Color** — базова палітра (`black`, `white`, `product1/2/3`, `success`,
+  `warning`, `danger`, `info`, `alt1/2/3`, `gold`, `silver`, `bronze`,
+  `disabled`, `tone.text`, `tone.bg.neutral`, `tone.bg.vibrant`)
 - **Border Radius** — `baseBorderRadius`
 - **Border Width** — `baseBorderWidth`
 - **Font Family** — `fontFamilyMain`, `fontFamilyTitle`
 - **Font Weight** — `fontWeightDefault`, `fontWeightStrong`, `fontWeightTitle`
 
-Список обрізаний скролом панелі — далі в `core`, ймовірно, ще Font Size, Line
-Height, Spacing/Gap тощо. Уточнюється з JSON-файлу сету `core`.
+`map` додає: розмірна шкала `controlSize.{xs..xl}`, `fontSize*`,
+`lineHeight*`, `letterSpacing*`, `borderWidthNone`, `boxShadowNone`,
+кольорові "степи" (`product1Step`, `product2Step`, `dangerStep`, `toneStep`
+— варіації через `$extensions.studio.tokens.modify`, тип darken/lighten/alpha
+у просторі hsl).
 
-## Наступні кроки
+## Готовий каталог
 
-Чекаю JSON-файли по кожному сету (`core`, `map`, `alias`, `styles`,
-`component/general`, `component/product`, `component/widget`,
-`component/betting` — і за потреби дзеркальні `dark.*`). Кожен файл піде в
-`references/tokens/<набір-категорій>.md` з фактичними значеннями/alias-ами.
+Повний, автоматично згенерований перелік усіх 3081 токенів — з raw-значенням
++ резолвленим (де це alias) — лежить у `light/*.md` та `dark/*.md`
+(дзеркалить структуру `source/`). Дивись [README.md](README.md) за деталями
+формату та скрипта регенерації.

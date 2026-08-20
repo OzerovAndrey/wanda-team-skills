@@ -1,0 +1,396 @@
+{
+  "checkbox": {
+    "checked": {
+      "indicator": {
+        "disabled": {
+          "value": "{white}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.48",
+                "space": "hsl"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "footer": {
+    "bg": {
+      "value": "{bg.neutral.primary}",
+      "type": "color"
+    }
+  },
+  "header": {
+    "bg": {
+      "value": "{bg.neutral.primary}",
+      "type": "color"
+    }
+  },
+  "notification": {
+    "edge": {
+      "bg": {
+        "value": "{tone.bg.neutral}",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0.32",
+              "space": "hsl"
+            }
+          }
+        }
+      }
+    }
+  },
+  "segmented": {
+    "item": {
+      "checked": {
+        "bg": {
+          "value": "{tone.bg.neutral}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.52",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "label": {
+          "value": "{tt.primary}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "switcher": {
+    "indicator": {
+      "bg": {
+        "disabled": {
+          "value": "{white}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.48",
+                "space": "hsl"
+              }
+            }
+          }
+        }
+      },
+      "color": {
+        "default": {
+          "value": "{tone.bg.neutral}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.56",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "disabled": {
+          "value": "{black}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.4",
+                "space": "hsl"
+              }
+            }
+          }
+        }
+      }
+    },
+    "checked": {
+      "inner": {
+        "color": {
+          "disabled": {
+            "value": "{tt.quaternary}",
+            "type": "color"
+          }
+        }
+      }
+    },
+    "bg": {
+      "default": {
+        "value": "{tone.bg.neutral}",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0.36",
+              "space": "hsl"
+            }
+          }
+        }
+      },
+      "hover": {
+        "value": "{tone.bg.neutral}",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0.52",
+              "space": "hsl"
+            }
+          }
+        }
+      }
+    }
+  },
+  "award": {
+    "color": {
+      "value": "{tone.bg.vibrant}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "alpha",
+            "value": "0.64",
+            "space": "hsl"
+          }
+        }
+      }
+    }
+  },
+  "spinner": {
+    "track": {
+      "value": "{white}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "alpha",
+            "value": "0.18",
+            "space": "hsl"
+          }
+        }
+      }
+    }
+  },
+  "appsBadge": {
+    "bg": {
+      "value": "{black}",
+      "type": "color"
+    },
+    "br": {
+      "value": "{white}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "alpha",
+            "value": "0.5",
+            "space": "hsl"
+          }
+        }
+      }
+    },
+    "color": {
+      "value": "{white}",
+      "type": "color"
+    }
+  },
+  "tabbar": {
+    "item": {
+      "default": {
+        "value": "{tt.secondary}",
+        "type": "color"
+      },
+      "active": {
+        "value": "{tt.primary}",
+        "type": "color"
+      },
+      "disabled": {
+        "value": "{tt.quaternary}",
+        "type": "color"
+      }
+    }
+  },
+  "hero": {
+    "bg": {
+      "start": {
+        "value": "{tt.accent1}",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0.3",
+              "space": "hsl"
+            }
+          }
+        }
+      },
+      "end": {
+        "value": "{tt.accent1}",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0",
+              "space": "hsl"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tooltip": {
+    "boxShadowColor": {
+      "value": "{black}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "alpha",
+            "value": "0.25",
+            "space": "hsl"
+          }
+        }
+      }
+    }
+  },
+  "widget": {
+    "message": {
+      "bg": {
+        "recipient": {
+          "value": "{fill.default}",
+          "type": "color"
+        },
+        "sender": {
+          "value": "{product1}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.5",
+                "space": "hsl"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "card": {
+    "mood": {
+      "bg": {
+        "surprise-mode": {
+          "value": "{product1}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.15",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "new-arrivals": {
+          "value": "{success}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.15",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "pure-adrenalin": {
+          "value": "{warning}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.2",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "big-win-hunt": {
+          "value": "{alt1}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.15",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "tactical-play": {
+          "value": "{alt2}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.15",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+        "relaxed-flow": {
+          "value": "{alt3}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.15",
+                "space": "hsl"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "countdown": {
+    "v2": {
+      "bg": {
+        "value": "{white}",
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0.2",
+              "space": "hsl"
+            }
+          }
+        }
+      }
+    }
+  }
+}

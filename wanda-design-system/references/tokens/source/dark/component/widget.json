@@ -1,0 +1,31 @@
+{
+  "widget": {
+    "fab": {
+      "bg": {
+        "value": "{dropdown.bg}",
+        "type": "color"
+      }
+    },
+    "message": {
+      "bg": {
+        "recipient": {
+          "value": "{fill.default}",
+          "type": "color"
+        },
+        "sender": {
+          "value": "{product1}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "darken",
+                "value": "0.5",
+                "space": "hsl"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

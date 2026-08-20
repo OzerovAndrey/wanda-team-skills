@@ -1,0 +1,100 @@
+{
+  "betting": {
+    "primaryColor": {
+      "1": {
+        "value": "#414141",
+        "type": "color",
+        "description": "{tt.primary}"
+      },
+      "2": {
+        "value": "#F7F7F8",
+        "type": "color",
+        "description": "{bg.neutral.secondary}"
+      }
+    },
+    "secondaryColor": {
+      "1": {
+        "value": "#fff",
+        "type": "color",
+        "description": "{white}"
+      },
+      "2": {
+        "value": "#ECEDEE",
+        "type": "color",
+        "description": "{bg.neutral.tertiary}"
+      },
+      "3": {
+        "value": "#959595",
+        "type": "color",
+        "description": "{tt.tertiary}"
+      }
+    },
+    "primaryAccent": {
+      "1": {
+        "value": "#F40084",
+        "type": "color",
+        "description": "{tt.accent2}"
+      },
+      "2": {
+        "value": "#D83232",
+        "type": "color",
+        "description": "{tt.danger}"
+      },
+      "3": {
+        "value": "#FF249A",
+        "type": "color",
+        "description": "tt.accent2 lighten 0,2"
+      }
+    },
+    "text": {
+      "buttonText": {
+        "value": "#fff",
+        "type": "color",
+        "description": "{tt.white}"
+      },
+      "primaryText": {
+        "value": "#414141",
+        "type": "color",
+        "description": "{tt.primary}"
+      },
+      "secondaryText": {
+        "value": "#6B6B6B",
+        "type": "color",
+        "description": "{tt.secondary}"
+      }
+    },
+    "notification": {
+      "blocked": {
+        "value": "#999",
+        "type": "color",
+        "description": "white darken 0,4"
+      },
+      "error": {
+        "value": "#D83232",
+        "type": "color",
+        "description": "{tt.danger}"
+      },
+      "info": {
+        "value": "#1D70E2",
+        "type": "color",
+        "description": "{tt.accent1}"
+      },
+      "success": {
+        "value": "#0EA45B",
+        "type": "color",
+        "description": "tt.success darken 0,25"
+      },
+      "warning": {
+        "value": "#FFC700",
+        "type": "color",
+        "description": "{tt.warning}"
+      }
+    },
+    "betslipWidget": {
+      "maxWidth": {
+        "value": "360",
+        "type": "sizing"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "radio": {
+    "checked": {
+      "indicator": {
+        "disabled": {
+          "value": "{white}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.4",
+                "space": "hsl"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "input": {
+    "addon": {
+      "bg": {
+        "default": {
+          "value": "{tone.bg.neutral}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.12",
+                "space": "hsl"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

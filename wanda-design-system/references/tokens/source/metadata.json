@@ -1,0 +1,18 @@
+{
+  "tokenSetOrder": [
+    "light/core",
+    "light/map",
+    "light/alias",
+    "light/styles",
+    "light/component/general",
+    "light/component/product",
+    "light/component/widget",
+    "light/component/betting",
+    "dark/core",
+    "dark/alias",
+    "dark/component/general",
+    "dark/component/product",
+    "dark/component/widget",
+    "dark/component/betting"
+  ]
+}

@@ -136,6 +136,15 @@ description: Design system reference for the Wanda iGaming platform (dark slate,
 
 Інші типи сторінок — додаються сюди по мірі надходження нових прикладів.
 
+## Токени (Token Studio)
+
+Перед тим як називати/шукати будь-який токен у правилах чи коді — перевір
+`references/tokens/` (повний каталог, 3081 токен, light+dark, згенерований
+з реального Token Studio export). Не вигадуй і не реверси назву токена з
+Figma-ноди — там вона часто виглядає інакше, ніж у Token Studio (звідси
+минулі помилки з chip-gap токеном). Деталі архітектури (token sets, порядок
+резолву light/dark) — `references/tokens/structure.md`.
+
 ## Figma-файли
 
 | Файл | Key | Що там |

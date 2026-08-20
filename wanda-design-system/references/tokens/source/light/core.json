@@ -1,0 +1,115 @@
+{
+  "fontFamilyMain": {
+    "value": "Open Sans",
+    "type": "fontFamilies",
+    "description": "Шрифт для всех текстовых объектов проекта."
+  },
+  "fontFamilyTitle": {
+    "value": "Bungee",
+    "type": "fontFamilies"
+  },
+  "fontWeightDefault": {
+    "value": "400",
+    "type": "fontWeights"
+  },
+  "fontWeightStrong": {
+    "value": "600",
+    "type": "fontWeights"
+  },
+  "baseBorderRadius": {
+    "value": "8",
+    "type": "borderRadius"
+  },
+  "baseBorderWidth": {
+    "value": "1",
+    "type": "borderWidth"
+  },
+  "black": {
+    "value": "#000000",
+    "type": "color"
+  },
+  "white": {
+    "value": "#FFFFFF",
+    "type": "color"
+  },
+  "product1": {
+    "value": "#1D70E2",
+    "type": "color"
+  },
+  "product2": {
+    "value": "#F40084",
+    "type": "color"
+  },
+  "product3": {
+    "value": "#FFC700",
+    "type": "color"
+  },
+  "success": {
+    "value": "#0EA45B",
+    "type": "color"
+  },
+  "warning": {
+    "value": "#FFC700",
+    "type": "color"
+  },
+  "danger": {
+    "value": "#D83232",
+    "type": "color"
+  },
+  "info": {
+    "value": "{product1}",
+    "type": "color"
+  },
+  "alt1": {
+    "value": "#a04bc4",
+    "type": "color"
+  },
+  "alt2": {
+    "value": "#00BCD4",
+    "type": "color"
+  },
+  "alt3": {
+    "value": "#BD9865",
+    "type": "color"
+  },
+  "gold": {
+    "value": "#F3EB7C",
+    "type": "color"
+  },
+  "silver": {
+    "value": "#C3D9F9",
+    "type": "color"
+  },
+  "bronze": {
+    "value": "#F4C5C3",
+    "type": "color"
+  },
+  "disabled": {
+    "value": "#070707",
+    "type": "color"
+  },
+  "tone": {
+    "text": {
+      "value": "#2C2C2C",
+      "type": "color"
+    },
+    "bg": {
+      "neutral": {
+        "value": "#798086",
+        "type": "color"
+      },
+      "vibrant": {
+        "value": "{product1}",
+        "type": "color"
+      }
+    }
+  },
+  "baseControlSize": {
+    "value": "40",
+    "type": "sizing"
+  },
+  "fontWeightTitle": {
+    "value": "400",
+    "type": "fontWeights"
+  }
+}

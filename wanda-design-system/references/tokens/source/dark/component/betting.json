@@ -1,0 +1,94 @@
+{
+  "betting": {
+    "primaryColor": {
+      "1": {
+        "value": "#fff",
+        "type": "color",
+        "description": "{tt.white}"
+      },
+      "2": {
+        "value": "#222426",
+        "type": "color",
+        "description": "{bg.neutral.secondary}"
+      }
+    },
+    "secondaryColor": {
+      "1": {
+        "value": "#2C2E30",
+        "type": "color",
+        "description": "{bg.neutral.primary}"
+      },
+      "2": {
+        "value": "#383B3D",
+        "type": "color",
+        "description": "bg.neutral.primary Light:0,27"
+      },
+      "3": {
+        "value": "#898F95",
+        "type": "color",
+        "description": "{tone.bg.neutral} lighten 0,12"
+      }
+    },
+    "primaryAccent": {
+      "1": {
+        "value": "#EB007D",
+        "type": "color",
+        "description": "{tt.accent2} darken 0,1"
+      },
+      "2": {
+        "value": "#D83232",
+        "type": "color",
+        "description": "{tt.danger}"
+      },
+      "3": {
+        "value": "#FF38A2",
+        "type": "color",
+        "description": "{tt.accent2} lighten 0,2"
+      }
+    },
+    "text": {
+      "buttonText": {
+        "value": "#fff",
+        "type": "color",
+        "description": "{tt.white}"
+      },
+      "primaryText": {
+        "value": "#E5E5E5",
+        "type": "color",
+        "description": "{tt.primary}"
+      },
+      "secondaryText": {
+        "value": "#999",
+        "type": "color",
+        "description": "{tt.white} darken 0,4"
+      }
+    },
+    "notification": {
+      "blocked": {
+        "value": "#999",
+        "type": "color",
+        "description": "{tt.white} darken 0,4"
+      },
+      "error": {
+        "value": "#D83232",
+        "type": "color",
+        "description": "{tt.danger}"
+      },
+      "info": {
+        "value": "#4F8DFF",
+        "type": "color",
+        "description": "tt.accent1"
+      },
+      "success": {
+        "value": "#2BDA8D",
+        "type": "color",
+        "description": "{tt.success}"
+      },
+      "warning": {
+        "value": "#FAC02C",
+        "type": "color",
+        "description": "{tt.warning}"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product1": {
+    "value": "#4f8dff",
+    "type": "color"
+  },
+  "product2": {
+    "value": "#F40084",
+    "type": "color"
+  },
+  "success": {
+    "value": "#2BDA8D",
+    "type": "color"
+  },
+  "warning": {
+    "value": "#FAC02C",
+    "type": "color"
+  },
+  "tone": {
+    "text": {
+      "value": "{white}",
+      "type": "color"
+    }
+  }
+}

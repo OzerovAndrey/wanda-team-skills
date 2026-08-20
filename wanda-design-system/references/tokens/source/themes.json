@@ -1,0 +1,38 @@
+[
+  {
+    "id": "3175a7f6dbcd847b7ac49be731ee87caf9af9ff1",
+    "name": "Light",
+    "group": "Theme",
+    "selectedTokenSets": {
+      "light/map": "source",
+      "light/core": "source",
+      "light/alias": "enabled",
+      "light/styles": "enabled",
+      "light/component/general": "enabled",
+      "light/component/product": "enabled",
+      "light/component/widget": "enabled",
+      "light/component/betting": "enabled"
+    }
+  },
+  {
+    "id": "f0cad32793c57c8c8aaf062b620f59db129f70d5",
+    "name": "Dark",
+    "group": "Theme",
+    "selectedTokenSets": {
+      "light/core": "source",
+      "light/alias": "enabled",
+      "light/map": "source",
+      "light/styles": "enabled",
+      "light/component/general": "enabled",
+      "light/component/product": "enabled",
+      "light/component/widget": "enabled",
+      "dark/alias": "enabled",
+      "dark/core": "source",
+      "dark/component/general": "enabled",
+      "dark/component/product": "enabled",
+      "dark/component/widget": "enabled",
+      "dark/component/betting": "enabled",
+      "light/component/betting": "enabled"
+    }
+  }
+]
