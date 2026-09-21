@@ -10,7 +10,7 @@ const GROUPS=[
  {id:'feedback',name:'Feedback',desc:'System messages, loading and empty states.'},
  {id:'overlays',name:'Overlays',desc:'Layers that appear on top of the page.'},
  {id:'gaming',name:'Gaming & promo',desc:'Casino mechanics, promo widgets and trust badges.'},
- {id:'cards',name:'Cards',desc:'The Card family — 20 promo and content card types.'},
+ {id:'cards',name:'Cards',desc:'The Card family — 21 promo and content card types.'},
  {id:'layout',name:'Layout & organisms',desc:'Page-level building blocks assembled from other components.'},
  {id:'service',name:'Service',desc:'Figma service frames. Not shipped to product UI.'}];
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
