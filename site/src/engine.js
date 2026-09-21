@@ -66,31 +66,31 @@ function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.s
 /* ---- nav ---- */
 let GROUP='all',QUERY='';
 function inGroup(d){return GROUP=='all'||d.group==GROUP}
-function drawTabs(){const t=$('#tabs');t.innerHTML=[{id:'all',name:'All A–Z'},...GROUPS].map(g=>`<button class="tab ${GROUP==g.id?'on':''}" data-group="${g.id}"><span>${g.name}</span><em>${g.id=='all'?REG.length:REG.filter(d=>d.group==g.id).length}</em></button>`).join('')}
-function drawIndex(){const q=QUERY.trim().toLowerCase();const list=REG.filter(d=>inGroup(d)&&(!q||(d.name+' '+d.desc+' '+(d.alias||'')).toLowerCase().includes(q))).sort((a,b)=>a.name.localeCompare(b.name));
+function drawTabs(){const tb=$('#tabs');tb.innerHTML=[{id:'all',name:'All A–Z'},...GROUPS].map(g=>`<button class="tab ${GROUP==g.id?'on':''}" data-group="${g.id}"><span>${t(g.name)}</span><em>${g.id=='all'?REG.length:REG.filter(d=>d.group==g.id).length}</em></button>`).join('')}
+function drawIndex(){const q=QUERY.trim().toLowerCase();const list=REG.filter(d=>inGroup(d)&&(!q||(d.name+' '+d.desc+' '+t(d.desc)+' '+(d.alias||'')).toLowerCase().includes(q))).sort((a,b)=>a.name.localeCompare(b.name));
  let html='',L='';list.forEach(d=>{const l=d.name[0].toUpperCase();if(l!=L){L=l;html+=`<div class="ix-l">${l}</div>`}html+=`<a class="ix-i ${CUR==d.id?'on':''}" href="#/${d.id}">${esc(d.name)}${d.badge?`<i>${d.badge}</i>`:''}</a>`});
- $('#index').innerHTML=html||`<p class="ix-empty">No components match “${esc(QUERY)}”. Try another name.</p>`}
-function route(){TICKS.forEach(clearInterval);PTICKS.forEach(clearInterval);TICKS=[];PTICKS=[];const h=location.hash.replace(/^#\/?/,'');const [a,b]=h.split('/');
+ $('#index').innerHTML=html||`<p class="ix-empty">${t('No components match “{q}”. Try another name.').replace('{q}',esc(QUERY))}</p>`}
+function route(keep){TICKS.forEach(clearInterval);PTICKS.forEach(clearInterval);TICKS=[];PTICKS=[];const h=location.hash.replace(/^#\/?/,'');const [a,b]=h.split('/');
  if(!a){CUR=null;drawHome()}else if(a=='g'&&b){GROUP=b;CUR=null;drawGroup(b)}else if(BY[a]){CUR=a;GROUP=GROUP=='all'||BY[a].group==GROUP?GROUP:BY[a].group;drawDoc(BY[a])}else{CUR=null;drawHome()}
- drawTabs();drawIndex();window.scrollTo({top:0});$('#main').focus({preventScroll:true});document.body.classList.remove('nav-open')}
+ drawTabs();drawIndex();if(!keep){window.scrollTo({top:0});$('#main').focus({preventScroll:true})}document.body.classList.remove('nav-open')}
 /* ---- pages ---- */
-function card(d){return `<a class="cc" href="#/${d.id}"><b>${esc(d.name)}</b><span>${esc(d.desc)}</span><small>${GROUPS.find(g=>g.id==d.group).name}${d.figma?` — node ${d.figma}`:''}</small></a>`}
-function drawHome(){const byG=GROUPS.map(g=>{const l=REG.filter(d=>d.group==g.id).sort((a,b)=>a.name.localeCompare(b.name));return `<section class="hg"><div class="hg-h"><h2 class="t3"><a href="#/g/${g.id}">${g.name}</a></h2><p>${g.desc}</p></div><div class="cc-grid">${l.map(card).join('')}</div></section>`}).join('');
- $('#main').innerHTML=`<section class="hero"><div class="hero-t"><h1 class="d3">Wanda<br>Design System</h1><p class="lead">Every Wanda component in one place, live. Click, type and toggle — each preview is built from the same tokens as the product. Pick a component on the left or browse by group.</p><div class="hero-meta"><span>${REG.filter(d=>d.group!='foundations'&&d.group!='service').length} components</span><span>${TOKCOUNT} tokens</span><span>Light + Dark themes</span><span>Figma library v2.02</span></div></div><div class="hero-live" id="hero-live"></div></section>${byG}`;
+function card(d){return `<a class="cc" href="#/${d.id}"><b>${esc(d.name)}</b><span>${esc(t(d.desc))}</span><small>${t(GROUPS.find(g=>g.id==d.group).name)}${d.figma?` — node ${d.figma}`:''}</small></a>`}
+function drawHome(){const byG=GROUPS.map(g=>{const l=REG.filter(d=>d.group==g.id).sort((a,b)=>a.name.localeCompare(b.name));return `<section class="hg"><div class="hg-h"><h2 class="t3"><a href="#/g/${g.id}">${t(g.name)}</a></h2><p>${t(g.desc)}</p></div><div class="cc-grid">${l.map(card).join('')}</div></section>`}).join('');
+ $('#main').innerHTML=`<section class="hero"><div class="hero-t"><h1 class="d3">Wanda<br>Design System</h1><p class="lead">${t('Every Wanda component in one place, live. Click, type and toggle — each preview is built from the same tokens as the product. Pick a component on the left or browse by group.')}</p><div class="hero-meta"><span>${REG.filter(d=>d.group!='foundations'&&d.group!='service').length} ${t('components')}</span><span>${TOKCOUNT} ${t('tokens')}</span><span>${t('Light + Dark themes')}</span><span>${t('Figma library v2.02')}</span></div></div><div class="hero-live" id="hero-live"></div></section>${byG}`;
  heroLive()}
 function drawGroup(gid){const g=GROUPS.find(x=>x.id==gid);if(!g){drawHome();return}const l=REG.filter(d=>d.group==gid).sort((a,b)=>a.name.localeCompare(b.name));
- $('#main').innerHTML=`<header class="ph"><div class="crumbs"><a href="#/">Overview</a><span>/</span>${g.name}</div><h1 class="t1">${g.name}</h1><p class="lead">${g.desc}</p></header><div class="cc-grid">${l.map(card).join('')}</div>`}
+ $('#main').innerHTML=`<header class="ph"><div class="crumbs"><a href="#/">${t('Overview')}</a><span>/</span>${t(g.name)}</div><h1 class="t1">${t(g.name)}</h1><p class="lead">${t(g.desc)}</p></header><div class="cc-grid">${l.map(card).join('')}</div>`}
 function drawDoc(d){const p=S(d.id);const g=GROUPS.find(x=>x.id==d.group);
  const hasCtl=d.props.some(x=>x.ctl!==false&&x.t!='slot');
- $('#main').innerHTML=`<header class="ph"><div class="crumbs"><a href="#/">Overview</a><span>/</span><a href="#/g/${g.id}">${g.name}</a><span>/</span>${esc(d.name)}</div>
- <div class="ph-row"><h1 class="t1">${esc(d.name)}</h1>${d.figma?`<button class="node" data-copy="${d.figma}" title="Copy Figma node id">${I('copy',14)}Figma ${d.figma}</button>`:''}</div><p class="lead">${d.desc}</p></header>
- ${d.render?`<section class="pg ${hasCtl?'':'no-ctl'}"><div class="stage-wrap"><div class="stage ${d.stage||''}" id="stage"></div><div class="snip"><code id="snip"></code><button class="snip-c" data-copy-snip title="Copy">${I('copy',14)}</button></div></div>${hasCtl?`<aside class="ctl"><div class="ctl-h"><b>Properties</b><button class="reset" id="reset">Reset</button></div><div id="ctl"></div></aside>`:''}</section>`:''}
- ${d.gallery?`<section class="blk"><h2 class="t4">Variants</h2><div class="gal ${d.galCls||''}">${d.gallery()}</div></section>`:''}
+ $('#main').innerHTML=`<header class="ph"><div class="crumbs"><a href="#/">${t('Overview')}</a><span>/</span><a href="#/g/${g.id}">${t(g.name)}</a><span>/</span>${esc(d.name)}</div>
+ <div class="ph-row"><h1 class="t1">${esc(d.name)}</h1>${d.figma?`<button class="node" data-copy="${d.figma}" title="${t('Copy Figma node id')}">${I('copy',14)}Figma ${d.figma}</button>`:''}</div><p class="lead">${t(d.desc)}</p></header>
+ ${d.render?`<section class="pg ${hasCtl?'':'no-ctl'}"><div class="stage-wrap"><div class="stage ${d.stage||''}" id="stage"></div><div class="snip"><code id="snip"></code><button class="snip-c" data-copy-snip title="${t('Copy')}">${I('copy',14)}</button></div></div>${hasCtl?`<aside class="ctl"><div class="ctl-h"><b>${t('Properties')}</b><button class="reset" id="reset">${t('Reset')}</button></div><div id="ctl"></div></aside>`:''}</section>`:''}
+ ${d.gallery?`<section class="blk"><h2 class="t4">${t('Variants')}</h2><div class="gal ${d.galCls||''}">${d.gallery()}</div></section>`:''}
  ${d.extra?d.extra():''}
- ${d.props.length?`<section class="blk"><h2 class="t4">Properties</h2><div class="tbl-w"><table class="ptbl"><thead><tr><th>Property</th><th>Values</th><th>Default</th><th>Description</th></tr></thead><tbody>${d.props.map(x=>`<tr><td><code>${x.n}</code></td><td>${x.t=='enum'?x.o.map(o=>`<span class="pv">${esc(o)}</span>`).join(''):x.t=='range'?`<span class="pv">${x.min}–${x.max}</span>`:`<span class="pv">${x.t=='bool'?'boolean':x.t=='slot'?'slot':'string'}</span>`}</td><td>${x.d===undefined||x.d===''?'—':`<code>${esc(String(x.d))}</code>`}</td><td>${x.desc||''}</td></tr>`).join('')}</tbody></table></div></section>`:''}
- ${d.notes?`<section class="blk"><h2 class="t4">Usage notes</h2><ul class="notes">${d.notes.map(n=>`<li>${n}</li>`).join('')}</ul></section>`:''}
- ${d.tokens?`<section class="blk"><div class="blk-h"><h2 class="t4">Tokens</h2><span class="hint">Resolved for the current theme. Click to copy the CSS variable.</span></div><div class="toks" id="tok-list"></div></section>`:''}
- ${d.uses?`<section class="blk"><h2 class="t4">Built with</h2><div class="uses">${d.uses.map(u=>BY[u]?`<a class="chiplink" href="#/${u}">${BY[u].name}</a>`:'').join('')}</div></section>`:''}`;
+ ${d.props.length?`<section class="blk"><h2 class="t4">${t('Properties')}</h2><div class="tbl-w"><table class="ptbl"><thead><tr><th>${t('Property')}</th><th>${t('Values')}</th><th>${t('Default')}</th><th>${t('Description')}</th></tr></thead><tbody>${d.props.map(x=>`<tr><td><code>${x.n}</code></td><td>${x.t=='enum'?x.o.map(o=>`<span class="pv">${esc(o)}</span>`).join(''):x.t=='range'?`<span class="pv">${x.min}–${x.max}</span>`:`<span class="pv">${x.t=='bool'?'boolean':x.t=='slot'?'slot':'string'}</span>`}</td><td>${x.d===undefined||x.d===''?'—':`<code>${esc(String(x.d))}</code>`}</td><td>${x.desc?t(x.desc):''}</td></tr>`).join('')}</tbody></table></div></section>`:''}
+ ${d.notes?`<section class="blk"><h2 class="t4">${t('Usage notes')}</h2><ul class="notes">${d.notes.map(n=>`<li>${t(n)}</li>`).join('')}</ul></section>`:''}
+ ${d.tokens?`<section class="blk"><div class="blk-h"><h2 class="t4">${t('Tokens')}</h2><span class="hint">${t('Resolved for the current theme. Click to copy the CSS variable.')}</span></div><div class="toks" id="tok-list"></div></section>`:''}
+ ${d.uses?`<section class="blk"><h2 class="t4">${t('Built with')}</h2><div class="uses">${d.uses.map(u=>BY[u]?`<a class="chiplink" href="#/${u}">${BY[u].name}</a>`:'').join('')}</div></section>`:''}`;
  if(d.render){drawStage();drawCtl()}if(d.tokens)drawTokens(d);if(d.after)d.after($('#main'));if(typeof liveTimers=='function'){$$('.gal,.blk .stage',$('#main')).forEach(g=>g.querySelector('[data-end]')&&liveTimers(g,true))}
  const r=$('#reset');r&&r.addEventListener('click',()=>{STATE[d.id]=defaults(d);drawStage();drawCtl()})}
 function snippet(d,p){const parts=d.props.filter(x=>x.t!='slot'&&x.ctl!==false&&(!x.when||x.when(p))).map(x=>`${x.n}: ${x.t=='text'||x.t=='enum'?JSON.stringify(p[x.n]):p[x.n]}`);return `${d.sig||d.name.replace(/[^A-Za-z]/g,'')}({ ${parts.join(', ')} })`}
@@ -109,13 +109,13 @@ function tokVal(name){return getComputedStyle(document.documentElement).getPrope
 function expandTok(pat){if(!pat.includes('*'))return [pat];const re=new RegExp('^'+pat.replace(/\./g,'\\.').replace(/\*/g,'[^.]+(?:\\.[^.]+)*')+'$');return CATALOG.filter(t=>re.test(t[0])).map(t=>t[0])}
 function swatch(v){return /^(#|rgba?\(|linear-gradient)/.test(v)?`<i class="sw" style="background:${v}"></i>`:''}
 function drawTokens(d){const box=$('#tok-list');if(!box)return;const names=[...new Set(d.tokens.flatMap(expandTok))];
- box.innerHTML=names.map(n=>{const v=tokVal(n);return `<button class="tok" data-copy="var(--${n.replace(/\./g,'-')})" title="${esc(v)}">${swatch(v)}<code>${n}</code><span>${esc(v.length>38?v.slice(0,36)+'…':v)}</span></button>`}).join('')||'<p class="hint">No dedicated tokens.</p>'}
+ box.innerHTML=names.map(n=>{const v=tokVal(n);return `<button class="tok" data-copy="var(--${n.replace(/\./g,'-')})" title="${esc(v)}">${swatch(v)}<code>${n}</code><span>${esc(v.length>38?v.slice(0,36)+'…':v)}</span></button>`}).join('')||`<p class="hint">${t('No dedicated tokens.')}</p>`}
 /* ---- copy + toast ---- */
 function toast(m){let t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1600)}
-function copy(s){(navigator.clipboard?navigator.clipboard.writeText(s):Promise.reject()).then(()=>toast('Copied: '+s),()=>{const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('Copied: '+s)}catch(e){}a.remove()})}
+function copy(s){(navigator.clipboard?navigator.clipboard.writeText(s):Promise.reject()).then(()=>toast(t('Copied:')+' '+s),()=>{const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast(t('Copied:')+' '+s)}catch(e){}a.remove()})}
 /* ---- events ---- */
 function wire(){
- document.addEventListener('click',e=>{const t=e.target.closest('[data-group],[data-ctl-bool],[data-ctl-enum],[data-copy],[data-copy-snip],[data-theme-btn],[data-toggle],[data-set],[data-cycle],#burger');if(!t)return;
+ document.addEventListener('click',e=>{const t=e.target.closest('[data-group],[data-ctl-bool],[data-ctl-enum],[data-copy],[data-copy-snip],[data-theme-btn],[data-lang-btn],[data-toggle],[data-set],[data-cycle],#burger');if(!t)return;
   if(t.id=='burger'){document.body.classList.toggle('nav-open');return}
   if(t.dataset.group){GROUP=t.dataset.group;QUERY='';$('#q').value='';location.hash=GROUP=='all'?'#/':'#/g/'+GROUP;return}
   if(t.dataset.ctlBool){const n=t.dataset.ctlBool;set({[n]:!S(CUR)[n]});return}
@@ -123,6 +123,7 @@ function wire(){
   if(t.dataset.copy){copy(t.dataset.copy);return}
   if(t.hasAttribute('data-copy-snip')){copy($('#snip').textContent);return}
   if(t.dataset.themeBtn){setTheme(t.dataset.themeBtn);return}
+  if(t.dataset.langBtn){setLang(t.dataset.langBtn);return}
   const stg=t.closest('#stage,#hero-live');if(!stg)return;
   if(t.closest('.is-disabled,[aria-disabled="true"]'))return;
   const tgt=stg.id=='stage'?set:heroSet;
@@ -136,7 +137,7 @@ function wire(){
   if(t.id=='q'){QUERY=t.value;drawIndex();return}
   if(t.dataset.bind&&t.closest('#stage')){const n=t.dataset.bind;S(CUR)[n]=t.value;const f=t.closest('[data-field]');f&&f.classList.toggle('filled',!!t.value);const cnt=f&&f.querySelector('[data-count]');cnt&&(cnt.textContent=t.value.length+'/'+cnt.dataset.count);$('#snip').textContent=snippet(BY[CUR],S(CUR));const ci=$(`[data-ctl-text="${n}"]`);ci&&(ci.value=t.value)}});
  document.addEventListener('keydown',e=>{if(e.key=='/'&&document.activeElement.tagName!='INPUT'&&document.activeElement.tagName!='TEXTAREA'){e.preventDefault();$('#q').focus()}if(e.key=='Escape'&&CUR&&BY[CUR].esc){BY[CUR].esc()}});
- window.addEventListener('hashchange',route)}
+ window.addEventListener('hashchange',()=>route())}
 /* ---- hero live strip ---- */
 let HERO={sw:true,chip:1,seg:'Casino',fav:false,cnt:3,cb:true};
 function heroSet(p){Object.assign(HERO,p);heroLive()}

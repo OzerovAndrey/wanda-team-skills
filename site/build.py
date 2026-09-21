@@ -3,12 +3,13 @@ B=os.path.dirname(os.path.abspath(__file__));S=B+'/src'
 tokens=open(B+'/tokens.css').read()
 base=open(S+'/base.css').read()
 cat=json.load(open(B+'/catalog.json'))
-mods=['engine.js','c1-actions.js','c2-forms.js','c3-data.js','c4-data2.js','c5-nav.js','c6-feedback.js','c7-gaming.js','c8-cards.js','c9-layout.js']
-js='\n'.join(open(S+'/'+m).read() for m in mods)
+mods=['engine.js','i18n.js','c1-actions.js','c2-forms.js','c3-data.js','c4-data2.js','c5-nav.js','c6-feedback.js','c7-gaming.js','c8-cards.js','c9-layout.js']
+uk=json.load(open(B+'/i18n/uk.json'))
+js='\n'.join(open(S+'/'+m).read() for m in mods).replace('__UK__',json.dumps(uk,ensure_ascii=False,separators=(',',':')))
 boot=r'''
 const CATALOG=__CAT__;const TOKCOUNT=CATALOG.length.toLocaleString('en');
 (function(){const st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st);
- let t='dark';try{t=localStorage.getItem('wds-theme')||'dark'}catch(e){}setTheme(t);
+ let t='dark';try{t=localStorage.getItem('wds-theme')||'dark'}catch(e){}setTheme(t);initLang();
  $('#year').textContent=new Date().getFullYear();wire();route();})();
 '''.replace('__CAT__',json.dumps(cat,separators=(',',':')))
 html=f'''<!doctype html>
@@ -32,15 +33,16 @@ html{{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}}
 </head>
 <body>
 <header class="top">
- <button id="burger" class="w-btn v-text sz-md icon-only is-default" aria-label="Open component index"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
- <a class="brand" href="#/"><span class="brand-m">W</span><span><b>Wanda DS</b><br><small>Component library · v2.02</small></span></a>
- <label class="srch"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="q" type="search" placeholder="Search components" aria-label="Search components" autocomplete="off"><kbd>/</kbd></label>
- <div class="theme" role="group" aria-label="Theme"><button data-theme-btn="dark" aria-label="Dark theme" title="Dark"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button><button data-theme-btn="light" aria-label="Light theme" title="Light"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2"/></svg></button></div>
+ <button id="burger" class="w-btn v-text sz-md icon-only is-default" aria-label="Open component index" data-i18n-attr="aria-label:Open component index"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+ <a class="brand" href="#/"><span class="brand-m">W</span><span><b>Wanda DS</b><br><small data-i18n="Component library · v2.02">Component library · v2.02</small></span></a>
+ <label class="srch"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="q" type="search" placeholder="Search components" aria-label="Search components" data-i18n-attr="placeholder:Search components,aria-label:Search components" autocomplete="off"><kbd>/</kbd></label>
+ <div class="theme" role="group" aria-label="Theme" data-i18n-attr="aria-label:Theme"><button data-theme-btn="dark" aria-label="Dark theme" title="Dark" data-i18n-attr="aria-label:Dark theme,title:Dark"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button><button data-theme-btn="light" aria-label="Light theme" title="Light" data-i18n-attr="aria-label:Light theme,title:Light"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2"/></svg></button></div>
+ <div class="theme lang" role="group" aria-label="Language" data-i18n-attr="aria-label:Language"><button data-lang-btn="en" aria-pressed="true" lang="en" title="English">ENG</button><button data-lang-btn="uk" aria-pressed="false" lang="uk" title="Українська">UKR</button></div>
 </header>
-<nav class="tabs" id="tabs" aria-label="Component groups"></nav>
+<nav class="tabs" id="tabs" aria-label="Component groups" data-i18n-attr="aria-label:Component groups"></nav>
 <div class="shell">
- <aside class="side" aria-label="Components A–Z"><div id="index"></div></aside>
- <div><main id="main" tabindex="-1"></main><div class="foot">Wanda iGaming · Design System documentation · Built from Token Studio tokens (dark + light) · © <span id="year"></span></div></div>
+ <aside class="side" aria-label="Components A–Z" data-i18n-attr="aria-label:Components A–Z"><div id="index"></div></aside>
+ <div><main id="main" tabindex="-1"></main><div class="foot"><span data-i18n="Wanda iGaming · Design System documentation · Built from Token Studio tokens (dark + light) · ©">Wanda iGaming · Design System documentation · Built from Token Studio tokens (dark + light) · ©</span> <span id="year"></span></div></div>
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>

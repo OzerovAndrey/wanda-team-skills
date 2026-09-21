@@ -26,6 +26,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
 .srch kbd{font:600 10px/14px var(--fontFamilyMain);padding:1px 6px;border-radius:var(--borderRadius-sm);background:var(--fill-default);color:var(--tt-tertiary)}
 .theme{display:flex;padding:var(--segmented-padding);gap:2px;border-radius:var(--segmented-borderRadius-sm);background:var(--segmented-bg)}
 .theme button{display:grid;place-items:center;width:var(--segmented-item-size-sm);height:var(--segmented-item-size-sm);border:0;border-radius:var(--segmented-item-borderRadius-sm);background:none;color:var(--segmented-item-label-default);cursor:pointer}
+.theme.lang button{width:auto;padding:0 8px;font:600 11px/1 var(--fontFamilyMain);letter-spacing:.04em}
 .theme button.on{background:var(--segmented-item-checked-bg);color:var(--segmented-item-checked-label);box-shadow:var(--shadowSm)}
 #burger{display:none}
 /* group tabs */
