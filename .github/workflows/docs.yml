@@ -1,0 +1,46 @@
+name: Deploy Wanda DS docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wanda-design-system/references/tokens/**'
+      - 'site/**'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build docs from tokens
+        working-directory: site
+        run: |
+          python resolve.py dark
+          python resolve.py light
+          python gen_css.py
+          mkdir -p ../_site
+          OUT=../_site python build.py
+          touch ../_site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

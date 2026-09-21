@@ -2,10 +2,20 @@
 
 Спільні Claude Skills команди для роботи з Wanda Design System у Figma.
 
+## 🌐 Жива документація компонентів
+
+**https://ozerovandrey.github.io/wanda-team-skills/** — усі компоненти Wanda онлайн, у робочому стані
+(кнопки натискаються, інпути приймають текст, тогли перемикаються), з таблицями властивостей і токенами для Dark / Light.
+
+Сайт збирається автоматично (`.github/workflows/docs.yml`) при кожній зміні токенів у
+`wanda-design-system/references/tokens/**` або коду сайту в `site/**`. Деталі — `site/README.md`.
+
 ## Структура
 
 ```
 wanda-team-skills/
+├── site/                 — джерело сайту документації (збирається в GitHub Pages)
+├── .github/workflows/    — автодеплой документації
 └── wanda-design-system/
     ├── SKILL.md          — індексний файл (тригери, таблиця компонентів)
     ├── rules.md           — жорсткі правила збірки (breakpoints, ДС-компоненти)

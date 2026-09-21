@@ -1,2 +1,6 @@
 .DS_Store
 *.tmp
+_site/
+site/tokens.css
+site/catalog.json
+site/*_resolved.json
